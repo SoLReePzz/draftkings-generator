@@ -17,6 +17,7 @@ namespace DraftKings
 
         //Some players do not see the field because they suck (relatively) 
         //Set the cutoff cost to exclude these degenerates from our lineups
+        //this is a change to test GitHub Repo
         private int _qBCutoffCost = 5000;
         private int _rBCutoffCost = 3000;
         private int _wRCutoffCost = 3000;
