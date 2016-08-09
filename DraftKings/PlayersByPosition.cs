@@ -8,6 +8,7 @@ namespace DraftKings
 {
     public class PlayersByPosition
     {
+        //private lists for each position
         private List<Player> _qB;
         private List<Player> _rB;
         private List<Player> _wR;
@@ -23,26 +24,51 @@ namespace DraftKings
         private int _tECutoffCost = 3000;
         private int _dSTCutoffCost = 1000;
 
-        public void BuildPositionLists()
+        public List<List<Player>> BuildPositionLists()
         {
             //Create an instance of the AvailablePlayers.cs, Build full player list
             var allPlayers = new AvailablePlayers();
             var allPlayersList = allPlayers.BuildPlayerList();
 
-            //Create lists for each position plus flex option
+            //Create lists for each position plus flex option by passing in full player list
             var qbList = BuildQBList(allPlayersList);
             var rbList = BuildRBList(allPlayersList);
             var wrList = BuildWRList(allPlayersList);
             var teList = BuildTEList(allPlayersList);
             var dstList = BuildDSTList(allPlayersList);
+            _rB = rbList;
+            _wR = wrList;
+            _tE = teList;
             var flexList = BuildFlexList();
 
-            //This is for testing the output only!!!!
-            foreach (var player in wrList)
-            {
-                Console.WriteLine(player.Name + " " + player.Position + " " + player.Cost);
+            
 
+            //Return a matrix of the lists here, rows are by position (QB, RB, WR, TE, DST, FLEX)...
+            var positionTable = new List<List<Player>> { };
+            var row = new List<Player> { };
+            row = qbList;
+            positionTable.Add(row);
+            row = rbList;
+            positionTable.Add(row);
+            row = wrList;
+            positionTable.Add(row);
+            row = teList;
+            positionTable.Add(row);
+            row = dstList;
+            positionTable.Add(row);
+            row = flexList;
+            positionTable.Add(row);
+
+            //Testing the matrix to pass into the LineUp class
+            for (var i =0; i < positionTable.Count(); i++)
+            {
+                for (var j=0; j < positionTable[i].Count(); j++)
+                {
+                    Console.WriteLine(positionTable[i][j].Name);
+                }
             }
+
+            return positionTable;
         }
 
 
@@ -106,7 +132,6 @@ namespace DraftKings
             return _dST;
         }
 
-        //This needs work...
         public List<Player> BuildFlexList()
         {
             var _flex = new List<Player> { };
