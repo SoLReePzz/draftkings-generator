@@ -16,19 +16,22 @@ namespace DraftKings
 
         public List<List<Player>> BuildLineUp(List<List<Player>> playerMatrix)
         {
-
+            //I totally forgot about RB2, WR2, WR3!!!
             var _lineUps = new List<List<Player>> { };
             var lineUp = new List<Player> { };
 
             for (var i = 0; i < playerMatrix[0].Count(); i++) //qb's
             {
                 lineUp.Add(playerMatrix[0][i]);
+                var qBName = playerMatrix[0][i].Name;
                 for (var j = 0; j < playerMatrix[1].Count(); j++) //rb's
                 {
                     lineUp.Add(playerMatrix[1][j]);
+                    var rBName = playerMatrix[1][j].Name;
                     for (var k=0; k < playerMatrix[2].Count(); k++) //wr's
                     {
                         lineUp.Add(playerMatrix[2][k]);
+                        var wrName
                         for (var ii=0; ii< playerMatrix[3].Count(); ii++) //te's
                         {
                             lineUp.Add(playerMatrix[3][ii]);
@@ -41,7 +44,16 @@ namespace DraftKings
 
                                     if (lineUp.Distinct().Count() == lineUp.Count()) //also need ot test if player.cost is good
                                     {
-                                        _lineUps.Add(lineUp);
+                                        var totalCost = 0;
+                                        foreach (var player in lineUp)
+                                        {
+                                            totalCost = player.Cost + totalCost;
+                                        }
+                                        if (totalCost <= _maxCost && totalCost >= _minCost)
+                                        {
+                                            _lineUps.Add(lineUp);
+                                        }
+                                        
                                     }
                                         
                                         
@@ -53,6 +65,15 @@ namespace DraftKings
 
             }
 
+            for (var i = 0; i < _lineUps.Count(); i++)
+            {
+                Console.WriteLine("Lineup number: " + i);
+                for (var j=0; j < _lineUps[i].Count(); j++)
+                {
+                    Console.WriteLine(_lineUps[i][j].Name);
+                }
+                    
+            }
             return _lineUps;
         }
 
