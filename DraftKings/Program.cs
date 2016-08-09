@@ -10,9 +10,12 @@ namespace DraftKings
     {
         static void Main(string[] args)
         {
-
+            //Create new Player by Position Class to build the player matrix
             var list = new PlayersByPosition();
-            list.BuildPositionLists();
+            
+            //Create new LineUp class, call BuildLineUp method with player matrix return from list.BuildPositionLists method
+            var lineUp = new LineUp();
+            lineUp.BuildLineUp(list.BuildPositionLists());
 
         }
     }
