@@ -12,6 +12,12 @@ namespace DraftKings
         private int _minCost = 42000;
         private List<Player> _lineUp;
 
+        public List<Player> BuildLineUp()
+        {
+            var lineUp = new List<Player> { };
+
+            return lineUp;
+        }
 
     }
 }
