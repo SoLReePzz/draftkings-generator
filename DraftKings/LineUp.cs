@@ -51,11 +51,13 @@ namespace DraftKings
                                                 lineUp.Add(playerMatrix[5][kk]);
                                                 var flexName = playerMatrix[5][kk].Name;
                                                 var totalCost = 0;
+                                                var duplicateCheckList = new List<string> { };
                                                 foreach (var player in lineUp)
                                                 {
                                                     totalCost = player.Cost + totalCost;
+                                                    duplicateCheckList.Add(player.Name);
                                                 }
-                                                if (totalCost <= _maxCost && totalCost >= _minCost) //&& each element is unique...
+                                                if (totalCost <= _maxCost && totalCost >= _minCost && duplicateCheckList.Distinct().Count() == 9) //Number 9 is players/lineup
                                                 {
 
                                                     Console.WriteLine("Lineup ID: " + i + j + l + + k + ll + w + ii + jj + kk);
