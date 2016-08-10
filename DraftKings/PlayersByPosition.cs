@@ -73,7 +73,7 @@ namespace DraftKings
         }
 
 
-        public List<Player> BuildQBList(List<Player> availablePlayers)
+        private List<Player> BuildQBList(List<Player> availablePlayers)
         {
             var _qB = new List<Player> { };
             foreach (var player in availablePlayers)
@@ -85,7 +85,7 @@ namespace DraftKings
             return _qB;
         }
 
-        public List<Player> BuildRBList(List<Player> availablePlayers)
+        private List<Player> BuildRBList(List<Player> availablePlayers)
         {
             var _rB = new List<Player> { };
             foreach (var player in availablePlayers)
@@ -97,7 +97,7 @@ namespace DraftKings
             return _rB;
         }
 
-        public List<Player> BuildWRList(List<Player> availablePlayers)
+        private List<Player> BuildWRList(List<Player> availablePlayers)
         {
             var _wR = new List<Player> { };
             foreach (var player in availablePlayers)
@@ -109,7 +109,7 @@ namespace DraftKings
             return _wR;
         }
 
-        public List<Player> BuildTEList(List<Player> availablePlayers)
+        private List<Player> BuildTEList(List<Player> availablePlayers)
         {
             var _tE = new List<Player> { };
             foreach (var player in availablePlayers)
@@ -121,7 +121,7 @@ namespace DraftKings
             return _tE;
         }
 
-        public List<Player> BuildDSTList(List<Player> availablePlayers)
+        private List<Player> BuildDSTList(List<Player> availablePlayers)
         {
             var _dST = new List<Player> { };
             foreach (var player in availablePlayers)
@@ -133,7 +133,7 @@ namespace DraftKings
             return _dST;
         }
 
-        public List<Player> BuildFlexList()
+        private List<Player> BuildFlexList()
         {
             var _flex = new List<Player> { };
             try

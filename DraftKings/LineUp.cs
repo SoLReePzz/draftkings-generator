@@ -14,7 +14,7 @@ namespace DraftKings
      
         public void BuildLineUp(List<List<Player>> playerMatrix)
         {
-            //I totally forgot about RB2, WR2, WR3!!!
+            
             var lineUp = new List<Player> { };
 
             for (var i = 0; i < playerMatrix[0].Count(); i++) //qb's
