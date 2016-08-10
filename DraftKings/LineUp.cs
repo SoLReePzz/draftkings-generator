@@ -55,10 +55,15 @@ namespace DraftKings
                                                 {
                                                     totalCost = player.Cost + totalCost;
                                                 }
-                                                if (totalCost <= _maxCost && totalCost >= _minCost)
+                                                if (totalCost <= _maxCost && totalCost >= _minCost) //&& each element is unique...
                                                 {
-                                                    
-                                                        _lineUps.Add(lineUp);
+
+                                                    Console.WriteLine("Lineup ID: " + i + j + l + + k + ll + w + ii + jj + kk);
+                                                    foreach (var player in lineUp)
+                                                    {
+                                                        Console.WriteLine(player.Name);
+                                                    }
+                                                    Console.WriteLine(" ");
                                                 }
                                                 lineUp.Remove(playerMatrix[5][kk]); //remove flex
                                             }
@@ -78,18 +83,6 @@ namespace DraftKings
                 }
                 lineUp.Remove(playerMatrix[0][i]); //remove qb
             }
-
-            Console.WriteLine("Number of Lineups: " + _lineUps.Count());
-            
-            //for (var i = 0; i < _lineUps.Count(); i++)
-            //{
-            //    Console.WriteLine("Lineup number: " + i);
-            //    for (var j=0; j < _lineUps[i].Count(); j++)
-            //    {
-            //        Console.WriteLine(_lineUps[i][j].Name);
-            //    }
-                    
-           // }
 
             return _lineUps;
         }
