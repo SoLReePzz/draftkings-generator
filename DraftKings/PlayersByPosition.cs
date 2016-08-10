@@ -60,13 +60,14 @@ namespace DraftKings
             positionTable.Add(row);
 
             //Testing the matrix to pass into the LineUp class
-            //for (var i =0; i < positionTable.Count(); i++)
-            //{
-            //    for (var j=0; j < positionTable[i].Count(); j++)
-            //    {
-            //        Console.WriteLine(positionTable[i][j].Name);
-            //    }
-            //}
+            for (var i = 0; i<positionTable.Count(); i++)
+            {
+                for (var j = 0; j<positionTable[i].Count(); j++)
+                {
+                    Console.WriteLine(positionTable[i][j].Name + " " + positionTable[i][j].Cost);
+                }
+                Console.WriteLine(" ");
+            }
 
             return positionTable;
         }

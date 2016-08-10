@@ -18,7 +18,7 @@ namespace DraftKings
         {
            //Pull in excel workbook (.CSV downloaded from DK website)
             Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\Samuel Crawford\Documents\C-Sharp\DraftKings\DKSalaries-Test.csv");
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\Samuel Crawford\Documents\C-Sharp\DraftKings\DKSalaries-Mock.csv");
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             Excel.Range xlRange = xlWorksheet.UsedRange;
 

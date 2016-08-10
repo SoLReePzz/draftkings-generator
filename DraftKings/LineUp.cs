@@ -11,13 +11,10 @@ namespace DraftKings
         //set the min cost of the lineUp as you so choose
         private int _maxCost = 50000;
         private int _minCost = 46500;
-        private List<List<Player>> _lineUps;
      
-
-        public List<List<Player>> BuildLineUp(List<List<Player>> playerMatrix)
+        public void BuildLineUp(List<List<Player>> playerMatrix)
         {
             //I totally forgot about RB2, WR2, WR3!!!
-            var _lineUps = new List<List<Player>> { };
             var lineUp = new List<Player> { };
 
             for (var i = 0; i < playerMatrix[0].Count(); i++) //qb's
@@ -60,7 +57,7 @@ namespace DraftKings
                                                 if (totalCost <= _maxCost && totalCost >= _minCost && duplicateCheckList.Distinct().Count() == 9) //Number 9 is players/lineup
                                                 {
 
-                                                    Console.WriteLine("Lineup ID: " + i + j + l + + k + ll + w + ii + jj + kk);
+                                                    Console.WriteLine("Lineup ID: " + i + "" + j + "" + l + "" + k + "" + ll + "" + w + "" + ii + "" + jj + "" + kk);
                                                     foreach (var player in lineUp)
                                                     {
                                                         Console.WriteLine(player.Name);
@@ -86,7 +83,6 @@ namespace DraftKings
                 lineUp.Remove(playerMatrix[0][i]); //remove qb
             }
 
-            return _lineUps;
         }
 
     }
