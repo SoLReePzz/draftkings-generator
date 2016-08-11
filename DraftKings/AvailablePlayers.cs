@@ -12,7 +12,6 @@ namespace DraftKings
     {
         private List<Player> _allPlayers;
 
-
         //Methods to read the positions, Names, Salaries of each player and return the lists
         public List<Player> BuildPlayerList()
         {

@@ -17,7 +17,7 @@ namespace DraftKings
         private List<Player> _dST;
 
         //Some players do not see the field because they suck (relatively) 
-        //Set the cutoff cost to exclude these degenerates from our lineups
+        //Set the cutoff cost to exclude these (realtive) degenerates from our lineups
         private int _qBCutoffCost = 5600;
         private int _rBCutoffCost = 4000;
         private int _wRCutoffCost = 4000;
@@ -40,8 +40,6 @@ namespace DraftKings
             _wR = wrList;
             _tE = teList;
             var flexList = BuildFlexList();
-
-            
 
             //Return a matrix of the lists here, rows are by position (QB, RB, WR, TE, DST, FLEX)...
             var positionTable = new List<List<Player>> { };
