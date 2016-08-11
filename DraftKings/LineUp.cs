@@ -25,44 +25,55 @@ namespace DraftKings
                 for (var j = 0; j < playerMatrix[1].Count()-1; j++) //rb1's
                 {
                     lineUp.Add(playerMatrix[1][j]);
-                    for (var l = j+1; l < playerMatrix[1].Count(); l++) //rb2's
+                    var rb1Name = lineUp[1].Name.ToString();
+                    for (var l = j+1; l < playerMatrix[1].Count(); l++) //rb2's (RB2 iterator = RB1 iterator + 1)
                     {
                         lineUp.Add(playerMatrix[1][l]);
-                        for (var k = 0; k < playerMatrix[2].Count()-2; k++) //wr1's
+                        var rb2Name = lineUp[2].Name.ToString();
+                        for (var k = 0; k < playerMatrix[2].Count()-2; k++) //wr1's 
                         {
                             lineUp.Add(playerMatrix[2][k]);
-                            for (var ll = k+1; ll < playerMatrix[2].Count()-1; ll++) //wr2's
+                            var wr1Name = lineUp[3].Name.ToString();
+                            for (var ll = k+1; ll < playerMatrix[2].Count()-1; ll++) //wr2's (WR2 iterator = WR1 iterator + 1)
                             {
                                 lineUp.Add(playerMatrix[2][ll]);
-                                for (var w = ll+1; w < playerMatrix[2].Count(); w++) //wr3's
+                                var wr2Name = lineUp[4].Name.ToString();
+                                for (var w = ll+1; w < playerMatrix[2].Count(); w++) //wr3's (WR3 iterator = WR2 iterator + 1)
                                 {
                                     lineUp.Add(playerMatrix[2][w]);
+                                    var wr3Name = lineUp[5].Name.ToString();
                                     for (var ii = 0; ii < playerMatrix[3].Count(); ii++) //te's
                                     {
                                         lineUp.Add(playerMatrix[3][ii]);
+                                        var teName = lineUp[6].Name.ToString();
                                         for (var jj = 0; jj < playerMatrix[4].Count(); jj++) //dst's
                                         {
                                             lineUp.Add(playerMatrix[4][jj]);
-                                            for (var kk = 0; kk < playerMatrix[5].Count(); kk++) //flex's
+                                            for (var kk = 0; kk < playerMatrix[5].Count(); kk++) //flex's -- HOW DO I MAKE THIS A UNIQUE PLAYER????????????
                                             {
                                                 lineUp.Add(playerMatrix[5][kk]);
+                                                var flexName = lineUp[8].Name.ToString();
+                                                var flexTestList = new List<string> { rb1Name, rb2Name, wr1Name, wr2Name, wr3Name, teName };
+                                                //Calculate Line-up cost (must be between minCost and maxCost=50000)
                                                 var totalCost = 0;
-                                                var duplicateCheckList = new List<string> { };
                                                 foreach (var player in lineUp)
                                                 {
                                                     totalCost = player.Cost + totalCost;
-                                                    duplicateCheckList.Add(player.Name);
                                                 }
-                                              
-                                                if (totalCost <= _maxCost && totalCost >= _minCost && duplicateCheckList.Count() == 9) //Number 9 is players/lineup
+
+                                                //Cost Check - if within salary range, output the lineup
+                                                if (totalCost <= _maxCost && totalCost >= _minCost)
                                                 {
-                                                    Console.WriteLine("Lineup ID: " + i + "" + j + "" + l + "" + k + "" + ll + "" + w + "" + ii + "" + jj + "" + kk);
-                                                    foreach (var player in lineUp)
+                                                    if (!flexTestList.Contains(flexName))
                                                     {
-                                                        Console.WriteLine(player.Name);
+                                                        Console.WriteLine("Lineup ID: " + i + "" + j + "" + l + "" + k + "" + ll + "" + w + "" + ii + "" + jj + "" + kk);
+                                                        foreach (var player in lineUp)
+                                                        {
+                                                            Console.WriteLine(player.Name);
+                                                        }
+                                                        Console.WriteLine("Total Cost: " + totalCost);
+                                                        Console.WriteLine(" ");
                                                     }
-                                                    Console.WriteLine("Total Cost: " + totalCost);
-                                                    Console.WriteLine(" ");
                                                 }
                                                 lineUp.RemoveAt(8); //remove flex
                                             }
@@ -80,8 +91,7 @@ namespace DraftKings
                     }
                     lineUp.RemoveAt(1); //remove rb1
                 }
-                lineUp.RemoveAt(0); //remove qb
-                //lineUp.Remove(playerMatrix[0][i]); //remove qb
+                lineUp.RemoveAt(0); //remove qb (emptied list)
             }
 
         }
