@@ -22,19 +22,19 @@ namespace DraftKings
             for (var i = 0; i < playerMatrix[0].Count(); i++) //qb's
             {
                 lineUp.Add(playerMatrix[0][i]);
-                for (var j = 0; j < playerMatrix[1].Count(); j++) //rb1's
+                for (var j = 0; j < playerMatrix[1].Count()-1; j++) //rb1's
                 {
                     lineUp.Add(playerMatrix[1][j]);
-                    for (var l = 0; l < playerMatrix[1].Count(); l++) //rb2's
+                    for (var l = j+1; l < playerMatrix[1].Count(); l++) //rb2's
                     {
                         lineUp.Add(playerMatrix[1][l]);
-                        for (var k = 0; k < playerMatrix[2].Count(); k++) //wr1's
+                        for (var k = 0; k < playerMatrix[2].Count()-2; k++) //wr1's
                         {
                             lineUp.Add(playerMatrix[2][k]);
-                            for (var ll = 0; ll < playerMatrix[2].Count(); ll++) //wr2's
+                            for (var ll = k+1; ll < playerMatrix[2].Count()-1; ll++) //wr2's
                             {
                                 lineUp.Add(playerMatrix[2][ll]);
-                                for (var w = 0; w < playerMatrix[2].Count(); w++) //wr3's
+                                for (var w = ll+1; w < playerMatrix[2].Count(); w++) //wr3's
                                 {
                                     lineUp.Add(playerMatrix[2][w]);
                                     for (var ii = 0; ii < playerMatrix[3].Count(); ii++) //te's
@@ -61,6 +61,7 @@ namespace DraftKings
                                                     {
                                                         Console.WriteLine(player.Name);
                                                     }
+                                                    Console.WriteLine("Total Cost: " + totalCost);
                                                     Console.WriteLine(" ");
                                                 }
                                                 lineUp.RemoveAt(8); //remove flex
